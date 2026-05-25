@@ -6,7 +6,7 @@
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node-esm src/server.ts",
-    "start:dev": "nodemon --exec ts-node-esm src/server.ts", 
+    "start:dev": "nodemon --exec ts-node-esm src/server.ts",
     "train": "nodemon --exec python3 train.py",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +14,7 @@
   "author": "MIT",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "moment": "^2.30.1"
   },
   "devDependencies": {

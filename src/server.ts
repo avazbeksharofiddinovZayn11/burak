@@ -4,14 +4,6 @@
 // DI  ; Dependency Injection
 // Design pattern: Middleware, decotar
 
-function reverseSentence(text: string): string {
-  const words = text.split(" ");
+import dotenv from 'dotenv';
+dotenv.config();
 
-  const reversedWords = words.map(word =>
-    word.split("").reverse().join("")
-  );
-
-  return reversedWords.join(" ");
-}
-
-console.log(reverseSentence("we like coding!"));
