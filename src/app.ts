@@ -2,6 +2,8 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import router from "./views/router.js";
+import routerAdmin from "./views/routerAdmin.js";
+
 
 // __dirname ni yasash
 const __filename = fileURLToPath(import.meta.url);
@@ -19,8 +21,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Routers
-app.use("/", router)  // Middleware Design Pettern
-
+app.use("/admin", routerAdmin); // SSR: EJS
+app.use("/", router);           // SPA: REACT
 
 
 export default app;
