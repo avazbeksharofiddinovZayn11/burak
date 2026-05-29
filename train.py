@@ -1,19 +1,33 @@
+def palindromCheck(word, sayt):
+    reversed_word = ""
+
+    for i in range(len(word) - 1, -1, -1):
+        reversed_word += word[i]
+
+    return word == reversed_word
+
+print(palindromCheck("dad", "mom"))
+
+
+
+
+
 # M task
-def getSquareNumbers(arr):
-    result = []
+# def getSquareNumbers(arr):
+#     result = []
 
-    for num in arr:
-        obj = {
-            "number": num,
-            "square": num * num
-        }
+#     for num in arr:
+#         obj = {
+#             "number": num,
+#             "square": num * num
+#         }
 
-        result.append(obj)
+#         result.append(obj)
 
-    return result
+#     return result
 
 
-print(getSquareNumbers([8, 5, 9, 3,]))
+# print(getSquareNumbers([8, 5, 9, 3,]))
 
 
 # L task
