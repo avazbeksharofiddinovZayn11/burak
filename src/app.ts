@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import router from "./views/router.js";
-import routerAdmin from "./views/routerAdmin.js";
+import routerAdmin from "./views/router-admin.js";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config.js";
 
