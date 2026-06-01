@@ -1,12 +1,25 @@
-def palindromCheck(word, sayt):
-    reversed_word = ""
+# Project Standands:
+# Logging Standands:
+# Naming Standands;
+    # Funtion, method, veriable => Camel
+    # class => PASCAL
+    # folder => KEBAB
+    # css => SNAKE
+# - Error handling 
 
-    for i in range(len(word) - 1, -1, -1):
-        reversed_word += word[i]
 
-    return word == reversed_word
 
-print(palindromCheck("dad", "mom"))
+
+# N MITASK
+# def palindromCheck(word, sayt):
+#     reversed_word = ""
+
+#     for i in range(len(word) - 1, -1, -1):
+#         reversed_word += word[i]
+
+#     return word == reversed_word
+
+# print(palindromCheck("dad", "mom"))
 
 
 

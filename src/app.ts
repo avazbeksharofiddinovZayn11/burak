@@ -3,6 +3,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 import router from "./views/router.js";
 import routerAdmin from "./views/routerAdmin.js";
+import morgan from "morgan";
+import { MORGAN_FORMAT } from "./libs/config.js";
+
 
 
 // __dirname ni yasash
@@ -14,6 +17,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(morgan(MORGAN_FORMAT));
 // 2 Sessions
 
 // 3 Views
