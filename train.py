@@ -1,3 +1,18 @@
+# O MITASK
+def calculateSumOfNumbers(arr):
+    total = 0
+
+    for item in arr:
+        if type(item) == int or type(item) == float:
+            total += item
+
+    return total
+
+
+print(calculateSumOfNumbers([13, "4", {"son": 13}, True, 24]))
+
+
+
 # Project Standands:
 # Logging Standands:
 # Naming Standands;
