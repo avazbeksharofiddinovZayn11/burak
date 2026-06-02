@@ -1,9 +1,9 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { MemberStatus, MemberType } from "../libs/enums/member.enum.js";
 // Schema first & Code first
 
-const memberSchema = new Schema({
-  MemberType: {
+const memberSchema = new mongoose.Schema({
+  memberType: {
     type: String,
     enum: MemberType,
     default:MemberType.USER
@@ -15,33 +15,39 @@ const memberSchema = new Schema({
   },
   
   memberNick: {
-    type: String,
-    index: {unique: true, sparse: true},
-    required: true,
-  },
+  type: String,
+  unique: true,
+  sparse: true,
+  required: true,
+},
 
   memberPhone: {
-    typeL: String,
-    index: {unique: true, sparse: true},
-    required: true,
-  },
+  type: String,
+  unique: true,
+  sparse: true,
+  required: true,
+},
 
-  memberPassword: {
-    typeL: String,
-    select: false,
-    required: true,
-  },
+memberPassword: {
+  type: String,
+  select: false,
+  required: true,
+},
 
-   memberAdress: {
+  memberAdress: {
     typeL: String,
   },
 
   memberDesc: {
     typeL: String,
   },
+  
+  memberImage: {
+    type: String,
+  },
 
   memberPoints: {
-    typeL: Number,
+    type: Number,
     default: 0,
   },
 },
