@@ -1,15 +1,26 @@
+# P MITASK
+def objectToArray(obj):
+    result = []
+
+    for key, value in obj.items():
+        result.append([key, value])
+
+    return result
+print(objectToArray({"a": 13, "b": 9}))
+
+
 # O MITASK
-def calculateSumOfNumbers(arr):
-    total = 0
+# def calculateSumOfNumbers(arr):
+#     total = 0
 
-    for item in arr:
-        if type(item) == int or type(item) == float:
-            total += item
+#     for item in arr:
+#         if type(item) == int or type(item) == float:
+#             total += item
 
-    return total
+#     return total
 
 
-print(calculateSumOfNumbers([13, "4", {"son": 13}, True, 24]))
+# print(calculateSumOfNumbers([13, "4", {"son": 13}, True, 24]))
 
 
 
