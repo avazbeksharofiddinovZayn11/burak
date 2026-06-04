@@ -6,11 +6,14 @@ routerAdmin.get("/", restaurantcontroller.goHome);
 // Restaurant 
 routerAdmin
 .get("/login", restaurantcontroller.getLogin)
-.post("login/processLogin", restaurantcontroller.processLogin);
+.post("/login", restaurantcontroller.processLogin);
 
 routerAdmin
 .get("/signup", restaurantcontroller.getSignup)
 .post("/signup", restaurantcontroller.processSignup);
+
 // Product
+
 // User
+
 export default routerAdmin;

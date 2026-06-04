@@ -1,8 +1,9 @@
 // import { MemberType } from "../libs/enums/member.enum.js";
 import MemberModel from "../schema/Member.modul.js";
-import { Member, MemberInput } from "../libs/types/member.js";
+import { LoginInput, Member, MemberInput } from "../libs/types/member.js";
 import Errors, { HttpCode, Message } from "../libs/Errors.js";
 import { MemberType } from "../libs/enums/member.enum.js";
+import { promises } from "dns";
 
 
 class Membercervice {
@@ -27,6 +28,26 @@ class Membercervice {
     }
     // console.log("Passed here");
   }
+  public async processLogin(input: LoginInput): Promise<Member> {
+    const member = await this.memberModel.findOne({memberNick: input.memberNick}, 
+    {memberNick: 1, memberPassword: 1},)
+    .exec();
+  if(!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK);
+
+  const isMatch = input.memberPassword === member.memberPassword;
+
+  if(!isMatch) {
+    throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD);
+  }
+  
+  return await this.memberModel.findById(member._id).exec();
+
+
+
+
+
+  }
+
 }
 
 export default Membercervice;
