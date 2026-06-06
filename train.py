@@ -1,12 +1,21 @@
+# Q MITASK
+def hasProperty(obj, prop):
+    return prop in obj
+
+
+print(hasProperty({"name": "BMW"}, "name"))  
+print(hasProperty({"name": "BMW"}, "color"))  
+
+
 # P MITASK
-def objectToArray(obj):
-    result = []
+# def objectToArray(obj):
+#     result = []
 
-    for key, value in obj.items():
-        result.append([key, value])
+#     for key, value in obj.items():
+#         result.append([key, value])
 
-    return result
-print(objectToArray({"a": 13, "b": 9}))
+#     return result
+# print(objectToArray({"a": 13, "b": 9}))
 
 
 # O MITASK
