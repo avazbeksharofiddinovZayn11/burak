@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import {T} from "../libs/types/common.js";
-import MemberService from "../models/Members.service.js";
-import { LoginInput, MemberInput } from "../libs/types/member.js";
-import { MemberType } from "../libs/enums/member.enum.js";
+import {T} from "../libs/types/common";
+import MemberService from "../models/Members.service";
+import { LoginInput, MemberInput } from "../libs/types/member";
+import { MemberType } from "../libs/enums/member.enum";
 
 
 

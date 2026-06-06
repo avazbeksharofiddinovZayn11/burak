@@ -1,16 +1,15 @@
 import express from "express";
 import path from "path";
-import { fileURLToPath } from "url";
-import router from "./views/router.js";
-import routerAdmin from "./views/router-admin.js";
+import router from "./views/router";
+import routerAdmin from "./views/router-admin";
 import morgan from "morgan";
-import { MORGAN_FORMAT } from "./libs/config.js";
+import { MORGAN_FORMAT } from "./libs/config";
 
 
 
 // __dirname ni yasash
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // 1 Extrance
 const app = express();

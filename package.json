@@ -1,7 +1,6 @@
 {
   "name": "burak",
   "version": "1.0.0",
-  "type": "module",
   "description": "This is burak project backend",
   "main": "src/server.ts",
   "scripts": {
@@ -30,6 +29,7 @@
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.22.4",
     "typescript": "^5.2.2"
   }
 }

@@ -1,9 +1,8 @@
 // import { MemberType } from "../libs/enums/member.enum.js";
-import MemberModel from "../schema/Member.modul.js";
-import { LoginInput, Member, MemberInput } from "../libs/types/member.js";
-import Errors, { HttpCode, Message } from "../libs/Errors.js";
-import { MemberType } from "../libs/enums/member.enum.js";
-import { promises } from "dns";
+import MemberModel from "../schema/Member.modul";
+import { LoginInput, Member, MemberInput } from "../libs/types/member";
+import Errors, { HttpCode, Message } from "../libs/Errors";
+import { MemberType } from "../libs/enums/member.enum";
 import bcrypt from "bcryptjs";
 
 class Membercervice {

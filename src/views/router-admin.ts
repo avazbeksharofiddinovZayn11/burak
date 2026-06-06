@@ -1,16 +1,16 @@
 import express from "express";
 const routerAdmin = express.Router();
-import restaurantcontroller from "../controllers/restaurant.controller.js";
+import restaurantController from "../controllers/restaurant.controller";
 
-routerAdmin.get("/", restaurantcontroller.goHome);
+routerAdmin.get("/", restaurantController.goHome);
 // Restaurant 
 routerAdmin
-.get("/login", restaurantcontroller.getLogin)
-.post("/login", restaurantcontroller.processLogin);
+.get("/login", restaurantController.getLogin)
+.post("/login", restaurantController.processLogin);
 
 routerAdmin
-.get("/signup", restaurantcontroller.getSignup)
-.post("/signup", restaurantcontroller.processSignup);
+.get("/signup", restaurantController.getSignup)
+.post("/signup", restaurantController.processSignup);
 
 // Product
 
