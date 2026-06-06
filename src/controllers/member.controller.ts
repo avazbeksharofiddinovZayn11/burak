@@ -22,10 +22,9 @@ membercontroller.signup = async (req: Request, res: Response) => {
     res.json({member: result});
   } catch (err) {
     console.log("Error, signup", err);
-    if (err instanceof Errors)
-    res.status(err.code).json(err);
-else
-    res.status(Errors.standard.code).json(Errors.standard);
+    if (err instanceof Errors)res.status(err.code).json(err);
+
+    else res.status(Errors.standard.code).json(Errors.standard);
   }
     // res.json({});
   };
