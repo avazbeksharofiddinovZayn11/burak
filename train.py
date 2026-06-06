@@ -36,6 +36,9 @@ print(objectToArray({"a": 13, "b": 9}))
 # REST API
 # GRAPHQL API
 
+#  Traditional FD => SSR => EJS
+# Modern FD       => SPA => REACT
+
 
 
 
