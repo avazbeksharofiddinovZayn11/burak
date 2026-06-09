@@ -5,11 +5,14 @@ import routerAdmin from "./views/router-admin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 
+import session from "express-session";
+import ConnectMongoDB, { MongoDBStore } from "connect-mongodb-session";
 
-
-// __dirname ni yasash
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+const MongoStore = ConnectMongoDB(session);
+var store = new MongoDBStore({
+  uri: String(process.env.MONGO_URL),
+  collection: "mySessions",
+});
 
 // 1 Extrance
 const app = express();
@@ -18,6 +21,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
 // 2 Sessions
+
+app.use(session({
+  secret: String(process.env.SESSION_SECRET),
+  cookie: {
+    maxAge: 1000 * 3600 * 3, // 3 hours
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: true,
+})
+);
+
 
 // 3 Views
 app.set("views", path.join(__dirname, "views"));
