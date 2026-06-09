@@ -47,6 +47,8 @@ print(hasProperty({"name": "BMW"}, "color"))
 
 #  Traditional FD => SSR => EJS
 # Modern FD       => SPA => REACT
+# request join
+# self destroy
 
 
 
