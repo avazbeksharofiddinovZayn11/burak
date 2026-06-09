@@ -1,6 +1,7 @@
 import { ObjectId } from "mongoose";
 import { MemberStatus, MemberType } from "../enums/member.enum.js";
-import { eventLoopUtilization } from "perf_hooks";
+import { Request } from "express";
+import { Session } from "express-session";
 
 export interface Member {
 _id: ObjectId;
@@ -33,4 +34,9 @@ memberPoints?: string;
 export interface LoginInput {
   memberNick: string;
   memberPassword: string;
+}
+
+export interface AdminRequest extends Request {
+  member: Member;
+  session: Session & { member: Member };
 }
