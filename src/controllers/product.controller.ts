@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Errors from "../libs/Errors";
 import { T } from "../libs/types/common";
 import { MemberInput } from "../libs/types/member";
-import ProductService from "../models/product.service";
+import ProductService from "../models/Product.service";
 
 
 const productService = new ProductService();
@@ -25,6 +25,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
   productController.createNewProduct = async (req: Request, res: Response) => {
   try{
     console.log(".createNewProduct");
+    res.send("DONE!");
     
   } catch (err) {
     console.log("Error, createNewProduct", err);

@@ -1,10 +1,23 @@
+# R TASK 
+def calculate(expression):
+    num1, operator, num2 = expression.split()
+
+    num1 = int(num1)
+    num2 = int(num2)
+
+    if operator == "+":
+        return num1 + num2
+print(calculate("12 + 11"))
+
+# 
+# 
 # Q MITASK
-def hasProperty(obj, prop):
-    return prop in obj
+# def hasProperty(obj, prop):
+#     return prop in obj
 
 
-print(hasProperty({"name": "BMW"}, "name"))  
-print(hasProperty({"name": "BMW"}, "color"))  
+# print(hasProperty({"name": "BMW"}, "name"))  
+# print(hasProperty({"name": "BMW"}, "color"))  
 
 
 # P MITASK
