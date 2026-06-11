@@ -1,13 +1,29 @@
+# S MITASK
+def missingNumber(nums):
+    n = len(nums)
+
+    expected_sum = n * (n + 1) // 2
+    actual_sum = sum(nums)
+
+    missing = expected_sum - actual_sum
+
+    return missing
+
+
+print(missingNumber([1, 3, 4, 0]))
+
+
+
 # R TASK 
-def calculate(expression):
-    num1, operator, num2 = expression.split()
+# def calculate(expression):
+#     num1, operator, num2 = expression.split()
 
-    num1 = int(num1)
-    num2 = int(num2)
+#     num1 = int(num1)
+#     num2 = int(num2)
 
-    if operator == "+":
-        return num1 + num2
-print(calculate("12 + 11"))
+#     if operator == "+":
+#         return num1 + num2
+# print(calculate("12 + 11"))
 
 # 
 # 
