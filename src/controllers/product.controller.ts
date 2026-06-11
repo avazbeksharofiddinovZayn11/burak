@@ -5,6 +5,8 @@ import { MemberInput } from "../libs/types/member";
 import ProductService from "../models/Product.service";
 
 
+
+
 const productService = new ProductService();
 
 
@@ -29,6 +31,9 @@ productController.getAllProducts = async (req: Request, res: Response) => {
     
   } catch (err) {
     console.log("Error, createNewProduct", err);
+    console.log(req.file);
+    console.log(req.body);
+
     if (err instanceof Errors)res.status(err.code).json(err);
 
     else res.status(Errors.standard.code).json(Errors.standard);
