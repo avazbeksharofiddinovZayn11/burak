@@ -1,6 +1,5 @@
 import path from "path";
 import multer from "multer";
-// @ts-ignore: missing uuid types
 import { v4 } from "uuid";
 
 function getTargetImageStorage(address: any) {
