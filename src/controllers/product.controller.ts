@@ -38,7 +38,6 @@ productController.createNewProduct = async (
       return ele.path;
     });
 
-    const id = req.params.id;
     await productService.createNewProduct(data);
     res.send(
       `<script>alert("Successful creation!"); window.location.replace('/admin/product/all')</script>`,

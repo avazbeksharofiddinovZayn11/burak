@@ -23,19 +23,23 @@ routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
 // Product
 routerAdmin.get("/product/all", 
-  restaurantController.verfyRestaurant, 
+  restaurantController.verifyRestaurant, 
   productController.getAllProducts);
 
 routerAdmin
 .post("/product/create", 
-  restaurantController.verfyRestaurant,  
+  restaurantController.verifyRestaurant,  
   makeUploader("products").array("productImage", 4),
   productController.createNewProduct);
 
 routerAdmin
 .post("/product/:id", 
-  restaurantController.verfyRestaurant, 
+  restaurantController.verifyRestaurant, 
   productController.updateChosenProduct);
-// User
+
+  // User
+  routerAdmin.get("/user/all", 
+    restaurantController.verifyRestaurant, 
+    restaurantController.getUsers)
 
 export default routerAdmin;

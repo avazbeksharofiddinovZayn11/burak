@@ -7,8 +7,9 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 
 const memberService = new MemberService();
 
-const restaurantcontroller: T = {};
-restaurantcontroller.goHome = (req: Request, res: Response) => {
+const restaurantController: T = {};
+
+restaurantController.goHome = (req: Request, res: Response) => {
   try {
     console.log("goHome");
     res.render("home");
@@ -19,7 +20,7 @@ restaurantcontroller.goHome = (req: Request, res: Response) => {
   }
 };
 
-restaurantcontroller.getSignup = (req: Request, res: Response) => {
+restaurantController.getSignup = (req: Request, res: Response) => {
   try {
     console.log("getSignup");
     res.render("signup");
@@ -29,7 +30,7 @@ restaurantcontroller.getSignup = (req: Request, res: Response) => {
   }
 };
 
-restaurantcontroller.getLogin = (req: Request, res: Response) => {
+restaurantController.getLogin = (req: Request, res: Response) => {
   try {
     console.log("getLogin");
     res.render("login");
@@ -39,7 +40,7 @@ restaurantcontroller.getLogin = (req: Request, res: Response) => {
   }
 };
 
-restaurantcontroller.processSignup = async (
+restaurantController.processSignup = async (
   req: AdminRequest,
   res: Response,
 ) => {
@@ -69,7 +70,7 @@ restaurantcontroller.processSignup = async (
   }
 };
 
-restaurantcontroller.processLogin = async (
+restaurantController.processLogin = async (
   req: AdminRequest,
   res: Response,
 ) => {
@@ -96,7 +97,7 @@ restaurantcontroller.processLogin = async (
   }
 };
 
-restaurantcontroller.logout = async (req: AdminRequest, res: Response) => {
+restaurantController.logout = async (req: AdminRequest, res: Response) => {
   try {
     console.log("logout");
     req.session.destroy(function () {
@@ -109,7 +110,28 @@ restaurantcontroller.logout = async (req: AdminRequest, res: Response) => {
   }
 };
 
-restaurantcontroller.checkAuthSession = async (
+restaurantController.getUsers = async (req: Request, res: Response) => {
+  try {
+    console.log("getUsers");
+    const result = await memberService.getUsers();
+    console.log(result)
+    res.render("users", { users: result });
+  } catch (err) {
+    console.log("Error, getUsers", err);
+    res.redirect("/admin/login");
+  }
+};
+
+restaurantController.updateChosenUser = (req: Request, res: Response) => {
+  try {
+    console.log("updateChosenUser");
+    res.render("login");
+  } catch (err) {
+    console.log("Error, updateChosenUser", err);
+  }
+};
+
+restaurantController.checkAuthSession = async (
   req: AdminRequest,
   res: Response,
 ) => {
@@ -127,7 +149,7 @@ restaurantcontroller.checkAuthSession = async (
   }
 };
 
-restaurantcontroller.verfyRestaurant = (
+restaurantController.verifyRestaurant = (
   req: AdminRequest,
   res: Response,
   next: NextFunction,
@@ -143,4 +165,4 @@ restaurantcontroller.verfyRestaurant = (
   }
 };
 
-export default restaurantcontroller;
+export default restaurantController;
