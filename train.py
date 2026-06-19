@@ -1,8 +1,19 @@
-# T MITASK
-def mergeSortedArrays(arr1, arr2):
-    return sorted(arr1 + arr2)
+# V MITASK
+def coutChars(text):
+    result = {}
+    
+    for char in text:
+        result[char] = result.get(char,0) + 1
 
-print(mergeSortedArrays([0, 4, 7, 3], [9, 2, 6]))
+    return result
+print(coutChars("professional"))
+
+
+# T MITASK
+# def mergeSortedArrays(arr1, arr2):
+#     return sorted(arr1 + arr2)
+
+# print(mergeSortedArrays([0, 4, 7, 3], [9, 2, 6]))
 # 
 # 
 # 
