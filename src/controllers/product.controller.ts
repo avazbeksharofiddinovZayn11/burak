@@ -29,6 +29,7 @@ productController.createNewProduct = async (
 ) => {
   try {
     console.log(".createNewProduct");
+    console.log("req.body", req.body);
     console.log("req.files:", req.files);
 
     if (!req.files?.length)
