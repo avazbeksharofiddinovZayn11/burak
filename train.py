@@ -1,12 +1,25 @@
-# V MITASK
-def coutChars(text):
-    result = {}
-    
-    for char in text:
-        result[char] = result.get(char,0) + 1
+# W MITASK 
+def sonArray(arr, size):
+    result = []
+
+    for i in range(0, len(arr), size):
+        result.append(arr[i:i + size])
 
     return result
-print(coutChars("professional"))
+
+print(sonArray([8, 9, 56, 44, 1, 3, 33,], 2))
+
+
+
+# V MITASK
+# def coutChars(text):
+#     result = {}
+    
+#     for char in text:
+#         result[char] = result.get(char,0) + 1
+
+#     return result
+# print(coutChars("professional"))
 
 
 # T MITASK
