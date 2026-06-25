@@ -1,13 +1,43 @@
+#  X MITASK 
+def countModel(obj, key):
+    count = 0
+
+    for k, v in obj.items():
+        if k == key:
+            count += 1
+
+        
+        if isinstance(v, dict):
+            count += countModel(v, key)
+
+    return count
+
+
+
+data = {
+    "model": "mers",
+    "s": {
+        "model": "bmw",
+        "x": {
+            "model": "audi"
+        }
+    },
+    
+}
+
+print(countModel(data, "model"))
+
+
 # W MITASK 
-def sonArray(arr, size):
-    result = []
+# def sonArray(arr, size):
+#     result = []
 
-    for i in range(0, len(arr), size):
-        result.append(arr[i:i + size])
+#     for i in range(0, len(arr), size):
+#         result.append(arr[i:i + size])
 
-    return result
+#     return result
 
-print(sonArray([8, 9, 56, 44, 1, 3, 33,], 2))
+# print(sonArray([8, 9, 56, 44, 1, 3, 33,], 2))
 
 
 
