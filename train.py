@@ -1,31 +1,42 @@
-#  X MITASK 
-def countModel(obj, key):
-    count = 0
+#   Y MITASK  
+def findintersection (one1, two2):
+    result = []
 
-    for k, v in obj.items():
-        if k == key:
-            count += 1
+    for son in one1:
+        if son in two2:
+            result.append(son)
+
+    return result
+print(findintersection([1, 3, 2, "olma", "behi"], [3, "olma"]))
+# 
+# X MITASK 
+# def countModel(obj, key):
+#     count = 0
+
+#     for k, v in obj.items():
+#         if k == key:
+#             count += 1
 
         
-        if isinstance(v, dict):
-            count += countModel(v, key)
+#         if isinstance(v, dict):
+#             count += countModel(v, key)
 
-    return count
+#     return count
 
 
 
-data = {
-    "model": "mers",
-    "s": {
-        "model": "bmw",
-        "x": {
-            "model": "audi"
-        }
-    },
+# data = {
+#     "model": "mers",
+#     "s": {
+#         "model": "bmw",
+#         "x": {
+#             "model": "audi"
+#         }
+#     },
     
-}
+# }
 
-print(countModel(data, "model"))
+# print(countModel(data, "model"))
 
 
 # W MITASK 
