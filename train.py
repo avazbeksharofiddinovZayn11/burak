@@ -1,13 +1,27 @@
-#   Y MITASK  
-def findintersection (one1, two2):
-    result = []
+# Z MITASK  
+def numbers(arr):
+    total = 0
 
-    for son in one1:
-        if son in two2:
-            result.append(son)
+    for num in arr:
+        if num % 2 == 0:
+            total += num
 
-    return result
-print(findintersection([1, 3, 2, "olma", "behi"], [3, "olma"]))
+    return total
+
+
+arr = [2, 3, 4, 6, ]
+print(numbers(arr))
+# 
+# Y MITASK  
+# def findintersection (one1, two2):
+#     result = []
+
+#     for son in one1:
+#         if son in two2:
+#             result.append(son)
+
+#     return result
+# print(findintersection([1, 3, 2, "olma", "behi"], [3, "olma"]))
 # 
 # X MITASK 
 # def countModel(obj, key):
