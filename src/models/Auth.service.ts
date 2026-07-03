@@ -3,7 +3,11 @@ import { Member } from "../libs/types/member";
 import jwt from "jsonwebtoken";
 
 class AuthService {
-  constructor() {}
+  private readonly secretToken: string;
+
+  constructor() {
+    this.secretToken = process.env.SECRET_TOKEN as string;
+  }
 
   public async createToken(payload: Member) {
     return new Promise((resolve, reject) => {
@@ -21,6 +25,12 @@ class AuthService {
         }
       );
     });
+  }
+
+  public async verifyAuth(token: string): Promise<Member> {
+    const result = (await jwt.verify(token, this.secretToken)) as Member;
+    console.log(`--- [AUTH] memberNick: ${result.memberNick} ---`);
+    return result;
   }
 }
 
