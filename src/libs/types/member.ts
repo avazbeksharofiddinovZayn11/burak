@@ -37,7 +37,7 @@ export interface LoginInput {
 }
 
 export interface MemberUpdateInput {
-private _id(_id: any): unknown;
+_id: ObjectId;
 memberType?: MemberType;
 memberStatus?: MemberStatus;
 memberNick?: string;
@@ -46,6 +46,12 @@ memberPassword?: string;
 memberAdress?: string;
 memberDesc?: string;
 memberImage?: string;
+}
+
+export interface ExtendedRequest extends Request {
+  member: Member;
+  file: Express.Multer.File;
+  files: Express.Multer.File[];
 }
 
 export interface AdminRequest extends Request {
