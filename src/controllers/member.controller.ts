@@ -1,48 +1,49 @@
 import { Request, Response } from "express";
-import {T} from "../libs/types/common";
+import { T } from "../libs/types/common";
 import MemberService from "../models/Members.service";
 import { LoginInput, Member, MemberInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
+import  AuthService  from "../models/Auth.service";
 
 const memberService = new MemberService();
-
+const authService = new AuthService();
 
 //REACT
 
 const membercontroller: T = {};
 
-
 membercontroller.signup = async (req: Request, res: Response) => {
-  try{
+  try {
     console.log("signup");
     const input: MemberInput = req.body,
-    result: Member = await memberService.signup(input);
+      result: Member = await memberService.signup(input);
+      const token = await authService.createToken(result);
+
     // TOKENS
 
-    res.json({member: result});
+    res.json({ member: result });
   } catch (err) {
     console.log("Error, signup", err);
-    if (err instanceof Errors)res.status(err.code).json(err);
+    if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }
-    // res.json({});
-  };
+  // res.json({});
+};
 
 membercontroller.login = async (req: Request, res: Response) => {
-  try{
+  try {
     console.log("login");
     const input: LoginInput = req.body,
-    result: Member = await memberService.login(input);
+      result: Member = await memberService.login(input),
+      token = await authService.createToken(result);
 
     // TOKENS
 
-    res.json({member: result});
+    res.json({ member: result });
   } catch (err) {
     console.log("Error, login", err);
-    if (err instanceof Errors)
-    res.status(err.code).json(err);
-else
-    res.status(Errors.standard.code).json(Errors.standard);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
     console.log(err);
   }
 };
