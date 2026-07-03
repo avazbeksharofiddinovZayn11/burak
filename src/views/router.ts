@@ -10,6 +10,6 @@ router.post(
   membercontroller.verifyAuth,
   membercontroller.logout
 );
-router.get("/member/detail", membercontroller.verifyAuth);
+router.get("/member/detail", membercontroller.verifyAuth, membercontroller.getMemberDetail);
 
 export default router;
