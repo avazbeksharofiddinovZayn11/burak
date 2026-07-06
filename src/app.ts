@@ -16,7 +16,7 @@ const store = new MongoDBStore({
   collection: "sessions",
 });
 
-// 1 Extrance
+// 1 Entrance
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
