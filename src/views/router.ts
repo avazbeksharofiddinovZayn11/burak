@@ -1,15 +1,27 @@
 import express from "express";
 const router = express.Router();
-import membercontroller from "../controllers/member.controller";
+import memberController from "../controllers/member.controller";
+import uploader from "../libs//utils/uploader";
 
 /* MEMBER */
-router.post("/member/login", membercontroller.login);
-router.post("/member/signup", membercontroller.signup);
+router.post("/member/login", memberController.login);
+router.post("/member/signup", memberController.signup);
 router.post(
   "/member/logout",
-  membercontroller.verifyAuth,
-  membercontroller.logout
+  memberController.verifyAuth,
+  memberController.logout,
 );
-router.get("/member/detail", membercontroller.verifyAuth, membercontroller.getMemberDetail);
+router.get(
+  "/member/detail",
+  memberController.verifyAuth,
+  memberController.getMemberDetail,
+);
+
+router.post(
+  "/member/update",
+  memberController.verifyAuth,
+  uploader("members").single("memberImage"),
+  memberController.updateMember,
+);
 
 export default router;

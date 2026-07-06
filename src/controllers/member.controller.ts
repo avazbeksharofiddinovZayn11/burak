@@ -6,6 +6,7 @@ import {
   LoginInput,
   Member,
   MemberInput,
+  MemberUpdateInput,
 } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import AuthService from "../models/Auth.service";
@@ -16,9 +17,9 @@ const authService = new AuthService();
 
 //REACT
 
-const membercontroller: T = {};
+const memberController: T = {};
 
-membercontroller.signup = async (req: Request, res: Response) => {
+memberController.signup = async (req: Request, res: Response) => {
   try {
     console.log("signup");
     const input: MemberInput = req.body,
@@ -40,7 +41,7 @@ membercontroller.signup = async (req: Request, res: Response) => {
   // res.json({});
 };
 
-membercontroller.login = async (req: Request, res: Response) => {
+memberController.login = async (req: Request, res: Response) => {
   try {
     console.log("login");
     const input: LoginInput = req.body,
@@ -62,7 +63,7 @@ membercontroller.login = async (req: Request, res: Response) => {
   }
 };
 
-membercontroller.logout = async (req: ExtendedRequest, res: Response) => {
+memberController.logout = async (req: ExtendedRequest, res: Response) => {
   try {
     console.log("logout");
     res.cookie("accessToken", null, {
@@ -77,11 +78,12 @@ membercontroller.logout = async (req: ExtendedRequest, res: Response) => {
   }
 };
 
-membercontroller.getMemberDetail = async (req: ExtendedRequest, res: Response) => {
+
+memberController.getMemberDetail = async (req: ExtendedRequest, res: Response) => {
   try {
     console.log("getMemberDetail");
     const result: Member = await memberService.getMemberDetail(req.member);
-
+    
     res.status(HttpCode.OK).json({ result });
   } catch (err) {
     console.log("Error, getMemberDetail", err);
@@ -90,7 +92,23 @@ membercontroller.getMemberDetail = async (req: ExtendedRequest, res: Response) =
   }
 };
 
-membercontroller.verifyAuth = async (
+memberController.updateMember = async (req: ExtendedRequest, res: Response) => {
+  try {
+    console.log("updateMember");
+    const input: MemberUpdateInput = req.body;
+    if (req.file) input.memberImage = req.file.filename;
+    const result = await memberService.updateMember(req.member, input);
+
+    res.status(HttpCode.OK).json({ result });
+
+  } catch (err) {
+    console.log("Error, updateMember", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
+
+memberController.verifyAuth = async (
   req: ExtendedRequest,
   res: Response,
   next: NextFunction,
@@ -109,7 +127,7 @@ membercontroller.verifyAuth = async (
   }
 };
 
-membercontroller.retrieveAuth = async (
+memberController.retrieveAuth = async (
   req: ExtendedRequest,
   res: Response,
   next: NextFunction,
@@ -124,4 +142,4 @@ membercontroller.retrieveAuth = async (
   }
 };
 
-export default membercontroller;
+export default memberController;
