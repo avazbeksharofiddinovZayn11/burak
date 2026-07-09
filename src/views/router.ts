@@ -36,4 +36,5 @@ router.get(
   productController.getProduct,
 );
 
+
 export default router;
