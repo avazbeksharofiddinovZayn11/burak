@@ -42,6 +42,7 @@ class Membercervice {
       throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
     }
   }
+    
 
   public async login(input: LoginInput): Promise<Member> {
     // Todo: Consider memeber status later
