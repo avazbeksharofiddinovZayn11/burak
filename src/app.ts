@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
-import router from "./views/router";
-import routerAdmin from "./views/router-admin";
+import router from "./router";
+import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import { MORGAN_FORMAT } from "./libs/config";
@@ -26,23 +26,23 @@ app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 // 2 Sessions
 
-app.use(session({
-  secret: String(process.env.SESSION_SECRET),
-  cookie: {
-    maxAge: 1000 * 3600 * 6, // 6 hours
-  },
-  store: store,
-  resave: true,
-  saveUninitialized: true,
-})
+app.use(
+  session({
+    secret: String(process.env.SESSION_SECRET),
+    cookie: {
+      maxAge: 1000 * 3600 * 6, // 6 hours
+    },
+    store: store,
+    resave: true,
+    saveUninitialized: true,
+  }),
 );
 
-app.use( function(req, res, next) {
+app.use(function (req, res, next) {
   const sessionInstance = req.session as T;
   res.locals.member = sessionInstance.member;
   next();
 });
-
 
 // 3 Views
 app.set("views", path.join(__dirname, "views"));
@@ -50,7 +50,6 @@ app.set("view engine", "ejs");
 
 // Routers
 app.use("/admin", routerAdmin); // SSR: EJS
-app.use("/", router);           // SPA: REACT
-
+app.use("/", router); // SPA: REACT
 
 export default app;
