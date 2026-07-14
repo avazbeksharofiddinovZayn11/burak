@@ -44,4 +44,6 @@ router.post(
   orderController.craeteOrder,
 );
 
+router.get("/order/all", memberController.verifyAuth, orderController.getMyOrders)
+
 export default router;

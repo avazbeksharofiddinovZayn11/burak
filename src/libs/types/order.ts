@@ -1,11 +1,12 @@
 import { ObjectId } from "mongoose";
+import { OrderStatus } from "../enums/order.enum";
 
 export interface OrderItem {
   _id: ObjectId;
   itemQuantity: number;
   itemPrice: ObjectId;
   productId: ObjectId;
-  craetedAt: Date;
+  createdAt: Date;
   updatedAt: Date;
 }
 
@@ -14,8 +15,10 @@ export interface Order {
   orderTotal: number;
   orderDelivery: number;
   memberId: ObjectId;
-  craetedAt: Date;
+  createdAt: Date;
   updatedAt: Date;
+  /** from aggregations */
+  orderItems: OrderItem[];
 }
 
 export interface OrderItemInput {
@@ -23,4 +26,10 @@ export interface OrderItemInput {
   itemPrice: number;
   productId: ObjectId;
   orderId?: ObjectId;
+}
+
+export interface OrderInquiry {
+  page: number;
+  limit: number;
+  orderStatus: OrderStatus;
 }

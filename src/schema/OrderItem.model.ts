@@ -15,6 +15,13 @@ const orderItemSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Product",
   },
+
+  orderId: {
+  type: Schema.Types.ObjectId,
+  ref: "Order",
+  required: true,
+},
+
 }, {timestamps: true, collection: "orderItems"},
 ); 
 
