@@ -17,6 +17,8 @@ export interface Product {
   productDesc?: string;
   ProductImages: string[];
   productViews: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ProductInquiry  {
@@ -36,7 +38,7 @@ export interface ProductInput {
   productSize?: ProductSize;
   productVolemu?: number;
   productDesc?: string;
-  ProductImages?: string[];
+  productImages?: string[];
   productViews?: number;
 }
 
