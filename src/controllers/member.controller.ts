@@ -96,7 +96,7 @@ memberController.getMemberDetail = async (req: ExtendedRequest, res: Response) =
     console.log("getMemberDetail");
     const result: Member = await memberService.getMemberDetail(req.member);
     
-    res.status(HttpCode.OK).json({ result });
+    res.status(HttpCode.OK).json( result );
   } catch (err) {
     console.log("Error, getMemberDetail", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -111,7 +111,7 @@ memberController.updateMember = async (req: ExtendedRequest, res: Response) => {
     if (req.file) input.memberImage = req.file.filename;
     const result = await memberService.updateMember(req.member, input);
 
-    res.status(HttpCode.OK).json({ result });
+    res.status(HttpCode.OK).json( result );
 
   } catch (err) {
     console.log("Error, updateMember", err);
