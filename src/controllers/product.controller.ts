@@ -26,7 +26,7 @@ productController.getProducts = async (req: Request, res: Response) => {
 
     const result = await productService.getProducts(inquiry);
 
-    res.status(HttpCode.OK).json({ result });
+    res.status(HttpCode.OK).json( result );
   } catch (err) {
     console.log("Error, getProducts", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -42,7 +42,7 @@ productController.getProduct = async (req: ExtendedRequest, res: Response) => {
     const memberid = req.member?._id ?? null;
     const result = await productService.getProduct(memberid, String(id));
 
-    res.status(HttpCode.OK).json({ result });
+    res.status(HttpCode.OK).json( result );
   } catch (err) {
     console.log("Error, getProducts", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -107,7 +107,7 @@ productController.updateChosenProduct = async (req: Request, res: Response) => {
 
     const result = await productService.updateChosenProduct(id, req.body);
 
-    res.status(HttpCode.OK).json({ data: result });
+    res.status(HttpCode.OK).json( result );
   } catch (err) {
     console.log("Error, updateChosenProduct", err);
     if (err instanceof Errors) res.status(err.code).json(err);
