@@ -11,7 +11,7 @@ class AuthService {
 
   public async createToken(payload: Member) {
     return new Promise((resolve, reject) => {
-      const duration = "1h";
+      const duration = "24h";
       jwt.sign(
         payload,
         process.env.SECRET_TOKEN as string,

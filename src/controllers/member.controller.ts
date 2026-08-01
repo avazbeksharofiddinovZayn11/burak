@@ -23,13 +23,13 @@ memberController.getRestaurant = async (req: Request, res: Response) => {
   try {
     console.log("getRestaurant");
     const result = await memberService.getRestaurant();
-    res.status(HttpCode.OK).json( result );
+    res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, getRestaurant", err);
     if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }
-}
+};
 
 memberController.signup = async (req: Request, res: Response) => {
   try {
@@ -41,7 +41,7 @@ memberController.signup = async (req: Request, res: Response) => {
     // TOKENS
     res.cookie("accessToken", token, {
       maxAge: AUTH_TIMER * 3600 * 1000, // 1 hour
-      httpOnly: true,
+      httpOnly: false,
     });
 
     res.status(HttpCode.CREATED).json({ member: result, accessToken: token });
@@ -62,11 +62,13 @@ memberController.login = async (req: Request, res: Response) => {
 
     // TOKENS
     res.cookie("accessToken", token, {
-      maxAge: AUTH_TIMER * 3600 * 1000, // 1 hour
-      httpOnly: true,
+      maxAge: AUTH_TIMER * 3600 * 1000,
+      httpOnly: false,
     });
-
-    res.status(HttpCode.OK).json({ member: result, ascessToken: token });
+    res.status(HttpCode.OK).json({
+      member: result,
+      accessToken: token,
+    });
   } catch (err) {
     console.log("Error, login", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -90,13 +92,15 @@ memberController.logout = async (req: ExtendedRequest, res: Response) => {
   }
 };
 
-
-memberController.getMemberDetail = async (req: ExtendedRequest, res: Response) => {
+memberController.getMemberDetail = async (
+  req: ExtendedRequest,
+  res: Response,
+) => {
   try {
     console.log("getMemberDetail");
     const result: Member = await memberService.getMemberDetail(req.member);
-    
-    res.status(HttpCode.OK).json( result );
+
+    res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, getMemberDetail", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -111,8 +115,7 @@ memberController.updateMember = async (req: ExtendedRequest, res: Response) => {
     if (req.file) input.memberImage = req.file.filename;
     const result = await memberService.updateMember(req.member, input);
 
-    res.status(HttpCode.OK).json( result );
-
+    res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, updateMember", err);
     if (err instanceof Errors) res.status(err.code).json(err);
@@ -124,15 +127,14 @@ memberController.getTopUsers = async (req: Request, res: Response) => {
   try {
     console.log("getTopUsers");
     const result = await memberService.getTopUsers();
-    
+
     res.status(HttpCode.OK).json(result);
   } catch (err) {
     console.log("Error, getTopUsers", err);
     if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }
-}
-
+};
 
 memberController.verifyAuth = async (
   req: ExtendedRequest,

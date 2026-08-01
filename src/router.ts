@@ -39,9 +39,9 @@ router.get(
 /** Order */
 
 router.post(
-  "/order/craete",
+  "/order/create",
   memberController.verifyAuth,
-  orderController.craeteOrder,
+  orderController.createOrder,
 );
 
 router.get(

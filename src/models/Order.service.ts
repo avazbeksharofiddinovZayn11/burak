@@ -24,7 +24,7 @@ class OrderService {
     this.memberService = new MemberService();
   }
 
-  public async craeteOrder(
+  public async createOrder(
     member: Member,
     input: OrderItemInput[],
   ): Promise<Order> {
